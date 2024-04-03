@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Nunito sans", sans-serif;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.navHeight {
+  height: 80px;
+}
+.restHeight {
+  min-height: calc(100vh - 80px);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+textarea {
+  resize: none !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  @apply bg-mainColor text-white;
+}
+
+.page-heading {
+  display: inline;
+  position: relative;
+  background-color: #fff;
+
+  &::before {
+    position: absolute;
+    display: block;
+    left: -45px;
+    top: 30px;
+    content: "";
+    height: 100%;
+    width: 75%;
+    background-image: radial-gradient(#252525 25%, #fff 40%);
+    background-position: 0 0;
+    background-size: 6px 6px;
+    z-index: -1;
+  }
+}
+
+.service {
+  @apply w-60 h-40 border-2 border-mainColor flex justify-center items-center flex-col text-center gap-4 cursor-pointer rounded-xl transition-all duration-300;
+
+  .service-icon {
+    @apply transition-all duration-300 text-mainColor;
+  }
+  &:hover {
+    @apply bg-mainColor;
+
+    span {
+      @apply hidden;
+    }
+    .service-icon {
+      @apply text-7xl rotate-[360deg]  text-white;
+    }
+  }
+}
+
+.tech {
+  @apply w-24 h-24 border-[3px] border-dashed border-mainColor rounded-full flex justify-center items-center cursor-pointer;
+  animation: spin 5s linear infinite;
+
+  &:nth-child(odd) {
+    @apply mt-4;
+  }
+  &:nth-child(even) {
+    @apply mt-24;
+  }
+
+  .tech-icon {
+    @apply text-3xl transition-all;
+    animation: spinOpp 5s linear infinite;
+  }
+  &:hover {
+    @apply bg-mainColor text-white;
+  }
+  &:hover .tech-icon {
+    @apply text-5xl;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinOpp {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.formGroup {
+  @apply flex-1 border-2 border-mainColor px-4 py-2 mb-6 rounded-md;
+
+  input,
+  textarea {
+    @apply border-none outline-none block w-full text-2xl;
+  }
+}
+
+.testimonial-container {
+  @apply relative;
+}
+
+.prev-button,
+.next-button {
+  @apply absolute top-1/2 transform -translate-y-1/2 text-3xl;
+}
+
+.prev-button {
+  @apply left-0 text-mainColor;
+}
+
+.next-button {
+  @apply right-0 text-mainColor;
+}
